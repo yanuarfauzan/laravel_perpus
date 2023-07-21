@@ -3,6 +3,7 @@
 use App\Http\Controllers\Authen;
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BukuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,8 @@ Route::post('/register', [Authen::class, 'is_register']);
 
 // DASHBOARD
 Route::get('/dashboard', [Dashboard::class, 'index']);
+
+// BUKU
+Route::get('/buku', [BukuController::class, 'index']);
+
+
