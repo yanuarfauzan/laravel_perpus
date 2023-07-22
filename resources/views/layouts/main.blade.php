@@ -31,6 +31,7 @@
     <script src="http://localhost:8000/assets/js/bootstrap.js"></script>
     <script src="http://localhost:8000/assets/js/app.js"></script>
 
+
     {{-- sweetalert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
     <!-- Need: Apexcharts -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Buku;
 use App\Http\Controllers\Authen;
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
@@ -36,4 +37,8 @@ Route::get('/create_buku', [BukuController::class, 'create']);
 Route::post('/store_buku', [BukuController::class, 'store']);
 Route::get('/edit_buku/{bukuById}', [BukuController::class, 'edit']);
 Route::put('/update_buku/{bukuById}', [BukuController::class, 'update']);
+Route::get('/delete_buku/{bukuById}', function(Buku $bukuById) {
+    Buku::destroy($bukuById->id);
+    return redirect('buku')->with(['success' => 'Buku telah terhapus']);
+});
 

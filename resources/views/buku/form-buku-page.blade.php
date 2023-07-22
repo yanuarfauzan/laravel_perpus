@@ -80,6 +80,8 @@
                                                         class="bi bi-upload"></i></label>
                                                 <input type="file" class="form-control" id="pdf_buku" name="pdf_buku"
                                                     value="{{ $action == 'update_buku' ? $bukuById->pdf_buku : old('pdf_buku') }}" />
+                                                <div class="mb-3"><img src="" id="output" width="200"
+                                                        style="display: none;" class="img-thumbnail"></div>
                                             </div>
                                         </div>
                                         <div class="text-center">
@@ -95,7 +97,8 @@
                                             <div class="input-group mb-3">
                                                 <label class="input-group-text" for="cover_buku"><i
                                                         class="bi bi-upload"></i></label>
-                                                <input type="file" class="form-control" id="cover_buku" name="cover_buku"
+                                                <input type="file" class="form-control" id="cover_buku"
+                                                    name="cover_buku"
                                                     value="{{ $action == 'update_buku' ? $bukuById->cover_buku : old('cover_buku') }}" />
                                             </div>
                                         </div>

@@ -38,7 +38,8 @@
                                             <a href="/edit_buku/{{ $b->id }}" class="badge bg-primary me-2">
                                                 <i class="bi bi-pen-fill"></i>
                                             </a>
-                                            <a href="" class="badge bg-danger">
+                                            <a href="/delete_buku/{{ $b->id }}" class="badge bg-danger"
+                                                onclick="showSweetAlert()">
                                                 <i class="bi bi-trash-fill"></i>
                                             </a>
                                         </td>
@@ -53,4 +54,13 @@
                 </div>
             </div>
         </div>
+        <script>
+            function showSweetAlert() {
+                Swal.fire({
+                    title: 'Buku Berhasil Dihapus',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            }
+        </script>
     @endsection
