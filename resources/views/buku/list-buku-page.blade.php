@@ -35,7 +35,7 @@
                                             <a href="/detail_buku/{{ $b->id }}" class="badge bg-info me-2">
                                                 <i class="bi bi-eye-fill"></i>
                                             </a>
-                                            <a href="" class="badge bg-primary me-2">
+                                            <a href="/edit_buku/{{ $b->id }}" class="badge bg-primary me-2">
                                                 <i class="bi bi-pen-fill"></i>
                                             </a>
                                             <a href="" class="badge bg-danger">
@@ -46,6 +46,9 @@
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        {{ $buku->links() }}
                     </div>
                 </div>
             </div>

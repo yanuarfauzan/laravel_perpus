@@ -16,6 +16,8 @@
     {{-- CKEditor --}}
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
+    {{-- Sweetalert --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -25,9 +27,12 @@
     @yield('content')
     @include('layouts.footer')
 
+
     <script src="http://localhost:8000/assets/js/bootstrap.js"></script>
     <script src="http://localhost:8000/assets/js/app.js"></script>
 
+    {{-- sweetalert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
     <!-- Need: Apexcharts -->
     <script src="http://localhost:8000/assets/extensions/apexcharts/apexcharts.min.js"></script>
     <script src="http://localhost:8000/assets/js/pages/dashboard.js"></script>

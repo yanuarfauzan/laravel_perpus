@@ -34,4 +34,6 @@ Route::get('/buku', [BukuController::class, 'index']);
 Route::get('/detail_buku/{bukuById}', [BukuController::class, 'detail_buku']);
 Route::get('/create_buku', [BukuController::class, 'create']);
 Route::post('/store_buku', [BukuController::class, 'store']);
+Route::get('/edit_buku/{bukuById}', [BukuController::class, 'edit']);
+Route::put('/update_buku/{bukuById}', [BukuController::class, 'update']);
 

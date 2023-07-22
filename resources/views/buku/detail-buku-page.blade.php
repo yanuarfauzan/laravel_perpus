@@ -31,7 +31,7 @@
                                             <p>Maaf, browser Anda tidak mendukung penampilan PDF. Silakan download file PDF
                                                 di sini:
                                         </object>
-                                        <a href="{{ $bukuById->pdf_buku }}" class="btn btn-success"><i
+                                        <a href="/pdf_buku/{{ $bukuById->pdf_buku }}" class="btn btn-success"><i
                                                 class="bi bi-file-earmark-pdf-fill"> Download
                                                 PDF</i></a>
                                     </div>
