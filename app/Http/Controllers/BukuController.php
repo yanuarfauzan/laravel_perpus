@@ -15,7 +15,7 @@ class BukuController extends Controller
         $kategori = Kategori::all();
         $buku = Buku::with('kategori')->paginate(5);
         return view(view: 'buku/list-buku-page', data: compact('title', 'buku', 'kategori'));
-    }
+    }   
     public function detail_buku(Buku $bukuById) {
         $title = 'Halaman Detail Buku';
         Buku::where('id', $bukuById)->with('kategori');

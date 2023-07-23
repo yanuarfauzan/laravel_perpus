@@ -24,35 +24,37 @@ Route::get('/', function () {
 });
 
 // AUTH
-Route::get('/login', [Authen::class, 'login']);
+Route::get('/login', [Authen::class, 'login'])->name('login');
 Route::post('/login', [Authen::class, 'is_login']);
 Route::get('/register', [Authen::class, 'register']);
-Route::post('/register', [Authen::class, 'is_register']);
+Route::post('/is_register', [Authen::class, 'is_register']);
+Route::get('/logout', [Authen::class, 'logout']);
 
-// DASHBOARD
-Route::get('/dashboard', [Dashboard::class, 'index']);
 
-// BUKU
-Route::get('/buku', [BukuController::class, 'index']);
-Route::get('/search_buku/{keyword}', [BukuController::class, 'search']);
-Route::get('/detail_buku/{bukuById}', [BukuController::class, 'detail_buku']);
-Route::get('/create_buku', [BukuController::class, 'create']);
-Route::post('/store_buku', [BukuController::class, 'store']);
-Route::get('/edit_buku/{bukuById}', [BukuController::class, 'edit']);
-Route::put('/update_buku/{bukuById}', [BukuController::class, 'update']);
+
+    // DASHBOARD
+Route::get('/dashboard', [Dashboard::class, 'index'])->middleware('auth');
+
+    // BUKU
+Route::get('/buku', [BukuController::class, 'index'])->middleware('auth');
+Route::get('/search_buku/{keyword}', [BukuController::class, 'search'])->middleware('auth');
+Route::get('/detail_buku/{bukuById}', [BukuController::class, 'detail_buku'])->middleware('auth');
+Route::get('/create_buku', [BukuController::class, 'create'])->middleware('auth');
+Route::post('/store_buku', [BukuController::class, 'store'])->middleware('auth');
+Route::get('/edit_buku/{bukuById}', [BukuController::class, 'edit'])->middleware('auth');
+Route::put('/update_buku/{bukuById}', [BukuController::class, 'update'])->middleware('auth');
 Route::get('/delete_buku/{bukuById}', function(Buku $bukuById) {
     Buku::destroy($bukuById->id);
     return redirect('buku')->with(['success' => 'Buku telah terhapus']);
-});
+})->middleware('auth');
 
 // KATEGORI
-Route::get('/kategori', [KategoriController::class, 'index']);
-Route::get('/create_kategori', [KategoriController::class, 'create']);
-Route::post('/store_kategori', [KategoriController::class, 'store']);
-Route::get('/edit_kategori/{kateById}', [KategoriController::class, 'edit']);
-Route::put('/update_kategori/{kateById}', [KategoriController::class, 'update']);
+Route::get('/kategori', [KategoriController::class, 'index'])->middleware('auth');
+Route::get('/create_kategori', [KategoriController::class, 'create'])->middleware('auth');
+Route::post('/store_kategori', [KategoriController::class, 'store'])->middleware('auth');
+Route::get('/edit_kategori/{kateById}', [KategoriController::class, 'edit'])->middleware('auth');
+Route::put('/update_kategori/{kateById}', [KategoriController::class, 'update'])->middleware('auth');
 Route::get('/delete_kategori/{kateById}', function(Kategori $kateById) {
     Kategori::destroy($kateById->id);
     return redirect('kategori')->with(['success' => 'Kategori telah terhapus']);
-});
-
+})->middleware('auth');

@@ -10,7 +10,9 @@
         </div>
         <div class="card">
             <div class="card-body px-4 py-4-5">
-                <a href="/create_kategori" class="btn btn-success mb-3">Tambah Data</a>
+                @if (session('user_data')['role_id'] === 1)
+                    <a href="/create_kategori" class="btn btn-success mb-3">Tambah Data</a>
+                @endif
                 <div class="row">
                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
                         <table class="table">

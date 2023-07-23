@@ -16,19 +16,30 @@ class Authen extends Controller
         return view(view: 'auth/login-page', data: compact('title'));
     }
     public function is_login(Request $request) {
+        // dd($request->all());
         $validated = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-        $email = $validated['email'];
-        $password = $validated['password'];
-        if(Auth::attempt($validated)) {
+        if (Auth::attempt($validated)) {
+
+            $user = Auth::user();
+            $userData = [
+                'username' => $user->name,
+                'email' => $user->email,
+                'role_id' => $user->role_id
+            ];
+    
+            $request->session()->put('user_data', $userData);
             $request->session()->regenerate();
-            return redirect('/dashboard');
-        } else {
-            return redirect('/login')->with(['failed' => 'Login Wrong']);
+            return redirect()->intended('/dashboard');
         }
+        return back()->withErrors([
+            'email' => __('Login gagal! Email atau Password salah.'),
+        ])->onlyInput('email');
     }
+    
+    
     public function register() {
         $title = 'Halaman Register';
         return view(view: 'auth/register-page', data: compact('title'));
@@ -58,9 +69,19 @@ class Authen extends Controller
             User::create([
                 'email' => $request->email,
                 'name' => $request->name,
-                'password' => Hash::make($request->password)
+                'password' => Hash::make($request->password),
+                'role_id' => $request->role_id
             ]);
             return redirect('/login');
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
+    }
+
+    
     
 }
