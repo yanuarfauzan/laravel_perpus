@@ -12,8 +12,9 @@ class BukuController extends Controller
 {
     public function index() {
         $title = 'Halaman Buku';
+        $kategori = Kategori::all();
         $buku = Buku::with('kategori')->paginate(5);
-        return view(view: 'buku/list-buku-page', data: compact('title', 'buku'));
+        return view(view: 'buku/list-buku-page', data: compact('title', 'buku', 'kategori'));
     }
     public function detail_buku(Buku $bukuById) {
         $title = 'Halaman Detail Buku';
@@ -134,5 +135,14 @@ class BukuController extends Controller
         ]);
 
         return redirect('/buku')->with(['success' => 'Buku berhasil diubah']);
+    }
+
+    public function search(Request $request, $keyword) {
+        $title = 'Halaman Buku';
+        $buku = Buku::whereHas('kategori', function ($query) use ($keyword) {
+            $query->where('nama_kategori', $keyword);
+        })->paginate(5);
+        $kategori = Kategori::all();
+        return view('/buku/list-buku-page', compact('buku', 'kategori', 'title'));
     }
 }

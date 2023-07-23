@@ -1,10 +1,12 @@
 <?php
 
 use App\Models\Buku;
+use App\Models\Kategori;
 use App\Http\Controllers\Authen;
 use App\Http\Controllers\Dashboard;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,7 @@ Route::get('/dashboard', [Dashboard::class, 'index']);
 
 // BUKU
 Route::get('/buku', [BukuController::class, 'index']);
+Route::get('/search_buku/{keyword}', [BukuController::class, 'search']);
 Route::get('/detail_buku/{bukuById}', [BukuController::class, 'detail_buku']);
 Route::get('/create_buku', [BukuController::class, 'create']);
 Route::post('/store_buku', [BukuController::class, 'store']);
@@ -40,5 +43,16 @@ Route::put('/update_buku/{bukuById}', [BukuController::class, 'update']);
 Route::get('/delete_buku/{bukuById}', function(Buku $bukuById) {
     Buku::destroy($bukuById->id);
     return redirect('buku')->with(['success' => 'Buku telah terhapus']);
+});
+
+// KATEGORI
+Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/create_kategori', [KategoriController::class, 'create']);
+Route::post('/store_kategori', [KategoriController::class, 'store']);
+Route::get('/edit_kategori/{kateById}', [KategoriController::class, 'edit']);
+Route::put('/update_kategori/{kateById}', [KategoriController::class, 'update']);
+Route::get('/delete_kategori/{kateById}', function(Kategori $kateById) {
+    Kategori::destroy($kateById->id);
+    return redirect('kategori')->with(['success' => 'Kategori telah terhapus']);
 });
 

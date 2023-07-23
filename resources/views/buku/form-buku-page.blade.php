@@ -47,7 +47,9 @@
                                     <select class="form-select" id="kategori_buku" name="kategori_buku"
                                         value="{{ $action == 'update_buku' ? $bukuById->kategori_buku : old('kategori_buku') }}">
                                         @foreach ($kategori as $k)
-                                            <option value="{{ $k->id }}">{{ $k->nama_kategori }}</option>
+                                            <option value="{{ $k->id }}"
+                                                @if ($action == 'update_buku') {{ $bukuById->kategori_buku === $k->id ? 'selected' : '' }} @endif>
+                                                {{ $k->nama_kategori }}</option>
                                         @endforeach
                                     </select>
                                     @error('kategori_buku')
@@ -56,8 +58,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi_buku" class="mb-2">Deskripsi Buku</label>
-                                    <textarea class="form-control" id="deskripsi_buku" name="deskripsi_buku"
-                                        value="{{ $action == 'update_buku' ? $bukuById->deskripsi_buku : old('deskripsi_buku') }}"></textarea>
+                                    <textarea class="form-control" id="deskripsi_buku" name="deskripsi_buku">
+                                        {{ $action == 'update_buku' ? $bukuById->deskripsi_buku : old('deskripsi_buku') }}
+                                    </textarea>
                                     @error('deskripsi_buku')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
