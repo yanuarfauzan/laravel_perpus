@@ -44,20 +44,23 @@
             <div class="sidebar-menu">
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
-                    <li class="sidebar-item active">
+                    <li
+                        class="sidebar-item {{ collect(explode('/', url()->current()))->pop() === 'dashboard' ? 'active' : '' }}">
                         <a href="/dashboard" class="sidebar-link">
                             <i class="bi bi-speedometer"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="sidebar-item active">
-                        <a href="/buku" class="sidebar-link">
+                    <li
+                        class="sidebar-item {{ collect(explode('/', url()->current()))->pop() === 'buku' ? 'active' : '' }}">
+                        <a href="/buku" class="sidebar-link ">
                             <i class="bi bi-book-fill"></i>
                             <span>Buku</span>
                         </a>
                     </li>
-                    <li class="sidebar-item active">
-                        <a href="/kategori" class="sidebar-link">
+                    <li
+                        class="sidebar-item {{ collect(explode('/', url()->current()))->pop() === 'kategori' ? 'active' : '' }}">
+                        <a href="/kategori" class="sidebar-link ">
                             <i class="bi bi-grid-fill"></i>
                             <span>Kategori</span>
                         </a>

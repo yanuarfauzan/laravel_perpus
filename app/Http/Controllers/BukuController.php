@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class BukuController extends Controller
@@ -13,13 +12,14 @@ class BukuController extends Controller
     public function index() {
         $title = 'Halaman Buku';
         $kategori = Kategori::all();
-        $buku = Buku::with('kategori')->paginate(5);
+        $buku = Buku::with('kategori')->paginate(10);
         return view(view: 'buku/list-buku-page', data: compact('title', 'buku', 'kategori'));
     }   
-    public function detail_buku(Buku $bukuById) {
+    public function detail_buku($bukuById) {
         $title = 'Halaman Detail Buku';
-        Buku::where('id', $bukuById)->with('kategori');
-        return view(view: 'buku/detail-buku-page', data: compact('title', 'bukuById'));
+        $buku = Buku::findOrFail($bukuById);
+        // Buku::where('id', $bukuById)->with('kategori');
+        return view(view: 'buku/detail-buku-page', data: compact('title', 'buku'));
     }
     public function create() {
         $title = 'Halaman Tambah Buku';
@@ -75,19 +75,19 @@ class BukuController extends Controller
             'cover_buku' => $image_name,
         ]);
 
-        Alert::success('Buku berhasil disimpan!', 'Terima kasih atas pengisian data.');
 
         return redirect('/buku')->with(['success' => 'Buku berhasil disimpan']);
     }
-    public function edit(Buku $bukuById) {
+    public function edit($bukuById) {
+        $buku = Buku::findOrFail($bukuById);
         $title = 'Halaman Edit Buku';
         $subTitle = 'Edit Buku';
         $action = 'update_buku';
         $kategori = Kategori::all();
 
-        return view(view: 'buku/form-buku-page', data: compact('title', 'subTitle', 'action', 'kategori', 'bukuById'));
+        return view(view: 'buku/form-buku-page', data: compact('title', 'subTitle', 'action', 'kategori', 'buku'));
     }
-    public function update(Request $request, Buku $bukuById)
+    public function update(Request $request, $bukuById)
     {
         $validator = Validator::make($request->all(), [
             'judul_buku' => 'required',
@@ -105,11 +105,12 @@ class BukuController extends Controller
             'pdf_buku.mimes' => 'File harus berupa pdf', 
             'cover_buku.mimes' => 'File harus berupa jpeg, png' 
         ]);
+
+        $buku = Buku::findOrFail($bukuById);
     
         if ($validator->fails()) {
-            return redirect('/create_buku')
-                ->withErrors($validator)
-                ->withInput();
+            return redirect('/edit_buku/' . $buku->id)
+                ->withErrors($validator);
         } 
 
         $cover_buku = $request->file('cover_buku');
@@ -123,7 +124,8 @@ class BukuController extends Controller
         $file_name = date('ymdhis') .'.'. $file_extension;
         $pdf_buku->move(public_path('pdf_buku'), $file_name);
 
-        $bukuById->update([
+
+        $buku->update([
             'judul_buku' => $request->judul_buku,
             'penulis_buku' => $request->penulis_buku,
             'tahun_terbit_buku' => $request->tahun_terbit_buku,
@@ -141,7 +143,7 @@ class BukuController extends Controller
         $title = 'Halaman Buku';
         $buku = Buku::whereHas('kategori', function ($query) use ($keyword) {
             $query->where('nama_kategori', $keyword);
-        })->paginate(5);
+        })->paginate(10);
         $kategori = Kategori::all();
         return view('/buku/list-buku-page', compact('buku', 'kategori', 'title'));
     }

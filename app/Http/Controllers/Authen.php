@@ -32,6 +32,7 @@ class Authen extends Controller
     
             $request->session()->put('user_data', $userData);
             $request->session()->regenerate();
+            $request->session()->save();
             return redirect()->intended('/dashboard');
         }
         return back()->withErrors([

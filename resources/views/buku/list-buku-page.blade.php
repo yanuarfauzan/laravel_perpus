@@ -8,6 +8,9 @@
         @endif
         <div class="col-md-6 mb-1">
             <div class="input-group mb-3">
+                <div class="me-2">
+                    <a href="/buku" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></i></i></a>
+                </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -28,7 +31,7 @@
                     <a href="/create_buku" class="btn btn-success mb-3">Tambah Data</a>
                 @endif
                 <div class="row">
-                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start">
+                    <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>

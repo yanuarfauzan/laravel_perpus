@@ -12,6 +12,8 @@
     <link rel="shortcut icon" href="http://localhost:8000/assets/images/logo/favicon.png" type="image/png" />
 
     <link rel="stylesheet" href="http://localhost:8000/assets/css/shared/iconly.css" />
+    {{-- Bootstrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     {{-- CKEditor --}}
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
@@ -24,6 +26,9 @@
     <script src="http://localhost:8000/assets/js/initTheme.js"></script>
 
     @include('layouts.sidebar')
+    <div class="text-end mb-3">
+        <a href="/logout" class="btn btn-danger col-md-1">logout</a>
+    </div>
     @yield('content')
     @include('layouts.footer')
 

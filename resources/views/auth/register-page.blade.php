@@ -34,11 +34,11 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
-                            @if (isset($errors))
-                                @error('email')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            @endif
+
+                            @error('email')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Username"
@@ -46,11 +46,11 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
-                            @if (isset($errors))
-                                @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            @endif
+
+                            @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-xl" placeholder="Password"
@@ -58,11 +58,11 @@
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
-                            @if (isset($errors))
-                                @error('password')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            @endif
+
+                            @error('password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-xl" placeholder="Confirm Password"

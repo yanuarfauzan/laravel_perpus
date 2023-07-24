@@ -9,7 +9,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <form action="/{{ $action == 'update_kategori' ? $action . '/' . $kateById->id : $action }}"
+                            <form action="/{{ $action == 'update_kategori' ? $action . '/' . $kategori->id : $action }}"
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @if ($action === 'update_kategori')
@@ -19,7 +19,7 @@
                                     <label for="nama_kategori" class="mb-2">Nama Kategori</label>
                                     <input type="text" class="form-control" id="nama_kategori"
                                         placeholder="masukkan nama kategori" name="nama_kategori"
-                                        value="{{ $action == 'update_kategori' ? $kateById->nama_kategori : old('nama_kategori') }}" />
+                                        value="{{ $action == 'update_kategori' ? $kategori->nama_kategori : old('nama_kategori') }}" />
                                     @error('nama_kategori')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

@@ -32,7 +32,9 @@ class Kernel extends HttpKernel
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Session\Middleware\StartSession::class,
+            \App\Http\Middleware\CorsMiddleware::class,
             // Middleware lain yang ingin Anda masukkan dalam grup 'web'
         ],
 
@@ -64,5 +66,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'must-admin' => \App\Http\Middleware\MustAdmin::class,
     ];
 }

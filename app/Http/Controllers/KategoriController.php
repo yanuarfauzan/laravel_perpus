@@ -25,17 +25,20 @@ class KategoriController extends Controller
         
         return redirect('/kategori')->with(['success' => 'Kategori berhasil disimpan']);
     }
-    public function edit(Kategori $kateById) {
+    public function edit($kateById) {
+        $kategori = Kategori::findOrFail($kateById);
         $title = 'Halaman Edit Kategori';
         $subTitle = 'Edit Kategori';
         $action = 'update_kategori';
-        return view(view: '/kategori/form-kategori-page', data: compact('title', 'subTitle', 'action', 'kateById'));
+        return view(view: '/kategori/form-kategori-page', data: compact('title', 'subTitle', 'action', 'kategori'));
     }
-    public function update(Request $request, Kategori $kateById) {
-        $kateById->update([
+    public function update(Request $request, $kateById) {
+        $kategori = Kategori::findOrFail($kateById);
+        $kategori->update([
             'nama_kategori' => $request->nama_kategori
         ]);
         
         return redirect('/kategori')->with(['success' => 'Kategori berhasil disimpan']);
     }
+    
 }
