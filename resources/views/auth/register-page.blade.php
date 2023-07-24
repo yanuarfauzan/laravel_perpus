@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="assets/css/pages/auth.css" />
     <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon" />
     <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
 </head>
 
 <body>
@@ -16,8 +18,8 @@
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
-                    <div class="auth-logo">
-                        <a href="index.html"><img src="assets/images/logo/logo.svg" alt="Logo" /></a>
+                    <div class="logo">
+                        <a href="/login"><i class="bi bi-journals"></i>perplus</a>
                     </div>
                     <h1 class="auth-title">Sign Up</h1>
                     <p class="auth-subtitle mb-5">

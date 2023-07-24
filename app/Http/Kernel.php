@@ -35,6 +35,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \App\Http\Middleware\CorsMiddleware::class,
+            \App\Http\Middleware\TrustHosts::class
             // Middleware lain yang ingin Anda masukkan dalam grup 'web'
         ],
 

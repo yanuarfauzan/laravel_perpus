@@ -9,7 +9,7 @@
         <div class="col-md-6 mb-1">
             <div class="input-group mb-3">
                 <div class="me-2">
-                    <a href="/buku" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></i></i></a>
+                    <a href="/buku" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i></a>
                 </div>
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"

@@ -20,6 +20,10 @@ class Authen extends Controller
         $validated = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+        ],[
+            'email.required' => 'email tidak boleh kosong.',
+            'email.email' => 'format email tidak benar',
+            'password.required' => 'password tidak boleh kosong.'
         ]);
         if (Auth::attempt($validated)) {
 
