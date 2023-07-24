@@ -95,6 +95,8 @@ Route::get('/create_buku', [BukuController::class, 'create'])->middleware('auth'
 Route::post('/store_buku', [BukuController::class, 'store'])->middleware('auth');
 Route::get('/edit_buku/{bukuById}', [BukuController::class, 'edit'])->middleware('auth');
 Route::put('/update_buku/{bukuById}', [BukuController::class, 'update'])->middleware('auth');
+Route::get('/deleted_buku', [BukuController::class, 'deleted_buku'])->middleware('auth');
+Route::get('/buku/{bukuById}/restore', [BukuController::class, 'restore_buku'])->middleware('auth');
 Route::get('/delete_buku/{bukuById}', function($bukuById) {
     $buku = Buku::findOrFail($bukuById);
     $buku->destroy($buku->id);
@@ -107,6 +109,8 @@ Route::get('/create_kategori', [KategoriController::class, 'create'])->middlewar
 Route::post('/store_kategori', [KategoriController::class, 'store'])->middleware('auth');
 Route::get('/edit_kategori/{kateById}', [KategoriController::class, 'edit'])->middleware('auth');
 Route::put('/update_kategori/{kateById}', [KategoriController::class, 'update'])->middleware('auth');
+Route::get('/deleted_kategori', [KategoriController::class, 'deleted_kategori'])->middleware('auth');
+Route::get('/kategori/{kateById}/restore', [KategoriController::class, 'restore_kategori'])->middleware('auth');
 Route::get('/delete_kategori/{kateById}', function($kateById) {
     $kategori = Kategori::findOrFail($kateById);
     $kategori->destroy($kategori->id);

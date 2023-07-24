@@ -40,5 +40,15 @@ class KategoriController extends Controller
         
         return redirect('/kategori')->with(['success' => 'Kategori berhasil disimpan']);
     }
+
+    public function deleted_kategori() {
+        $deletedKategori = Kategori::onlyTrashed()->paginate(10);
+        $title = 'Halaman Kategori Terhapus';
+        return view(view: '/kategori/deleted-kategori-page', data: compact('title', 'deletedKategori'));
+    }
+    public function restore_kategori($kateById) {
+        $restoredKategori = Kategori::withTrashed()->where('id', $kateById)->restore();
+        return redirect()->to('/kategori')->with(['success' => 'Katagori berhasil dikembalikan']);
+    }
     
 }

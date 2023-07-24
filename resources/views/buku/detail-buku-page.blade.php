@@ -5,6 +5,9 @@
             <div class="col">
                 <div class="row match-height">
                     <div class=" col-md-12">
+                        <div class="mb-2">
+                            <a href="/buku" class="btn btn-primary"><i class="bi bi-arrow-left"></i></a>
+                        </div>
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Detail Buku</h4>

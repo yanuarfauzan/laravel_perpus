@@ -53,7 +53,7 @@
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">
                             Remember your account?
-                            <a href="auth-login.html" class="font-bold">Log in</a>.
+                            <a href="/login" class="font-bold">Log in</a>.
                         </p>
                     </div>
                 </div>

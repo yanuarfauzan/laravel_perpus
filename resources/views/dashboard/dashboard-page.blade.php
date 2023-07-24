@@ -7,18 +7,14 @@
         <section class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body py-4-5 px-4">
-                        <div class="d-flex align-items-center">
-                            <div class="avatar avatar-xl">
-                                <img src="assets/images/faces/1.jpg" alt="Face 1" />
-                            </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold">{{ session('user_data')['username'] }}</h5>
-                                <h6 class="text-muted mb-0">{{ session('user_data')['email'] }}</h6>
-                                <h6 class="text-muted mb-0"> Role anda
-                                    : {{ session('user_data')['role_id'] === 1 ? 'admin' : 'user' }}</h6>
-                            </div>
-                        </div>
+                    <div class="mt-3 ms-3">
+                        <h3>Wellcome!!</h3>
+                    </div>
+                    <div class="ms-3 mb-3 mt-2">
+                        <h5 class="font-bold">{{ session('user_data')['username'] }}</h5>
+                        <h6 class="text-muted mb-0">{{ session('user_data')['email'] }}</h6>
+                        <h6 class="text-muted mb-0"> Role anda
+                            : {{ session('user_data')['role_id'] === 1 ? 'admin' : 'user' }}</h6>
                     </div>
                 </div>
             </div>

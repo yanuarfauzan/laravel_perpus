@@ -147,4 +147,15 @@ class BukuController extends Controller
         $kategori = Kategori::all();
         return view('/buku/list-buku-page', compact('buku', 'kategori', 'title'));
     }
+
+    public function deleted_buku() {
+        $title = 'Halaman Buku Terhapus';
+        $deletedBuku = Buku::onlyTrashed()->paginate(10);
+        $kategori = Kategori::onlyTrashed()->get();
+        return view(view: 'buku/deleted-buku-page', data: compact('deletedBuku', 'title', 'kategori'));
+    }
+    public function restore_buku($bukuById) {
+        $deletedBuku = Buku::withTrashed()->where('id', $bukuById)->restore();
+        return redirect()->to('buku')->with(['success' => 'Buku berhasil dikembalikan.']);
+    }
 }

@@ -32,7 +32,7 @@
                             name="role_id" />
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Email"
-                                name="email" />
+                                name="email" value="{{ old('email') }}" />
                             <div class="form-control-icon">
                                 <i class="bi bi-envelope"></i>
                             </div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-xl" placeholder="Username"
-                                name="name" />
+                                name="name" value="{{ old('name') }}" />
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
